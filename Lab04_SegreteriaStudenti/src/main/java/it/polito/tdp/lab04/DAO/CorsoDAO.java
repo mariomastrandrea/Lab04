@@ -10,24 +10,25 @@ import java.util.List;
 import it.polito.tdp.lab04.model.Corso;
 import it.polito.tdp.lab04.model.Studente;
 
-public class CorsoDAO {
-	
+public class CorsoDAO 
+{	
 	/*
 	 * Ottengo tutti i corsi salvati nel Db
 	 */
-	public List<Corso> getTuttiICorsi() {
-
+	public List<Corso> getTuttiICorsi() 
+	{
 		final String sql = "SELECT * FROM corso";
 
 		List<Corso> corsi = new LinkedList<Corso>();
 
-		try {
+		try 
+		{
 			Connection conn = ConnectDB.getConnection();
 			PreparedStatement st = conn.prepareStatement(sql);
-
 			ResultSet rs = st.executeQuery();
 
-			while (rs.next()) {
+			while (rs.next()) 
+			{
 
 				String codins = rs.getString("codins");
 				int numeroCrediti = rs.getInt("crediti");
@@ -39,15 +40,23 @@ public class CorsoDAO {
 				// Crea un nuovo JAVA Bean Corso
 				// Aggiungi il nuovo oggetto Corso alla lista corsi
 			}
-
-			conn.close();
+			
+			try
+			{
+				DAOUtilities.close(rs, st, conn);
+			}
+			catch(Exception e)
+			{
+				e.printStackTrace();
+				throw new RuntimeException("Errore chiusura risorse", e);
+			}
 			
 			return corsi;
-			
-
-		} catch (SQLException e) {
-			// e.printStackTrace();
-			throw new RuntimeException("Errore Db", e);
+		} 
+		catch (SQLException sqle) 
+		{
+			sqle.printStackTrace();
+			throw new RuntimeException("Errore Db", sqle);
 		}
 	}
 	

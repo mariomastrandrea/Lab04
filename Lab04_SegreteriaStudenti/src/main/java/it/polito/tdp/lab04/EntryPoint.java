@@ -1,36 +1,34 @@
 package it.polito.tdp.lab04;
 
 import javafx.application.Application;
-import static javafx.application.Application.launch;
-
-import it.polito.tdp.lab04.FXMLController;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
 
 
-public class EntryPoint extends Application {
-
+public class EntryPoint extends Application 
+{
     @Override
-    public void start(Stage stage) throws Exception {
-        
-    	FXMLController controller;
-    	
-    	FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/Scene.fxml"));
+    public void start(Stage stage) throws Exception 
+    {    	
+    	FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/Scene_lab04.fxml"));
         Parent root = loader.load();
         Scene scene = new Scene(root);
-
-        controller = loader.getController();
+        scene.getStylesheets().add("/styles/Styles.css");
+             
+    	FXMLController controller = loader.getController();
     	
         /*
 		 * Create and set the model here!
+		 * 
+		 *  Model model = new Model();
+		 *  controller.setModel(model);
 		 */
-		// controller.setModel();
-        
-        
-        stage.setTitle("JavaFX and Maven");
+          
+        stage.setTitle("Lab04 - Segreteria Studenti");
         stage.setScene(scene);
+        stage.setResizable(false);
         stage.show();
     }
 
@@ -42,8 +40,8 @@ public class EntryPoint extends Application {
      *
      * @param args the command line arguments
      */
-    public static void main(String[] args) {
+    public static void main(String[] args) 
+    {
         launch(args);
     }
-
 }
