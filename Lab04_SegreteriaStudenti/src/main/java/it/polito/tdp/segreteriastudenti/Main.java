@@ -1,4 +1,4 @@
-package it.polito.tdp.lab04;
+package it.polito.tdp.segreteriastudenti;
 
 public class Main 
 {

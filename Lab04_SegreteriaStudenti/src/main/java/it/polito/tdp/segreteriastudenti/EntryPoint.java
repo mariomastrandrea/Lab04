@@ -1,5 +1,6 @@
-package it.polito.tdp.lab04;
+package it.polito.tdp.segreteriastudenti;
 
+import it.polito.tdp.segreteriastudenti.model.SegreteriaStudentiModel;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -14,17 +15,13 @@ public class EntryPoint extends Application
     {    	
     	FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/Scene_lab04.fxml"));
         Parent root = loader.load();
+        
         Scene scene = new Scene(root);
         scene.getStylesheets().add("/styles/Styles.css");
              
-    	FXMLController controller = loader.getController();
-    	
-        /*
-		 * Create and set the model here!
-		 * 
-		 *  Model model = new Model();
-		 *  controller.setModel(model);
-		 */
+		FXMLController controller = loader.getController();
+    	SegreteriaStudentiModel model = new SegreteriaStudentiModel();
+    	controller.setModel(model);
           
         stage.setTitle("Lab04 - Segreteria Studenti");
         stage.setScene(scene);

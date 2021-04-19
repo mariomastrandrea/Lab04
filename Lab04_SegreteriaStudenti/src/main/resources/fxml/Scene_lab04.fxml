@@ -1,24 +1,28 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.geometry.Insets?>
+<?import javafx.scene.Cursor?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.ComboBox?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TextArea?>
 <?import javafx.scene.control.TextField?>
+<?import javafx.scene.effect.Light.Distant?>
+<?import javafx.scene.effect.Lighting?>
+<?import javafx.scene.effect.Shadow?>
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="570.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/15.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="it.polito.tdp.lab04.FXMLController">
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="580.0" prefWidth="690.0" xmlns="http://javafx.com/javafx/15.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="it.polito.tdp.segreteriastudenti.FXMLController">
    <top>
       <Label text="Lab4_Segreteria_Studenti" BorderPane.alignment="CENTER">
          <BorderPane.margin>
             <Insets top="20.0" />
          </BorderPane.margin>
          <font>
-            <Font size="20.0" />
+            <Font size="22.0" />
          </font>
       </Label>
    </top>
@@ -27,8 +31,11 @@
          <children>
             <HBox alignment="CENTER_LEFT" spacing="20.0">
                <children>
-                  <Label text="Corso:" />
-                  <ComboBox fx:id="CorsiComboBox" onAction="#handleCorsiComboBox" prefWidth="200.0" promptText="Scegli" />
+                  <Label focusTraversable="false" text="Corso:" />
+                  <ComboBox fx:id="corsiComboBox" minWidth="200.0" onAction="#handleCorsiComboBox" promptText="Scegli">
+                     <cursor>
+                        <Cursor fx:constant="HAND" />
+                     </cursor></ComboBox>
                </children>
                <VBox.margin>
                   <Insets bottom="10.0" top="10.0" />
@@ -36,38 +43,63 @@
             </HBox>
             <HBox alignment="CENTER_LEFT">
                <children>
-                  <Button mnemonicParsing="false" onAction="#handleCercaIscrittiCorso" prefWidth="133.0" text="Cerca iscritti corso" />
+                  <Button fx:id="cercaIscrittiCorsoButton" disable="true" focusTraversable="false" mnemonicParsing="false" onAction="#handleCercaIscrittiCorso" prefWidth="133.0" text="Cerca iscritti corso">
+                     <cursor>
+                        <Cursor fx:constant="HAND" />
+                     </cursor></Button>
                </children>
                <VBox.margin>
-                  <Insets bottom="10.0" left="7.0" top="5.0" />
+                  <Insets bottom="10.0" left="10.0" top="5.0" />
                </VBox.margin>
             </HBox>
             <HBox alignment="CENTER_LEFT" spacing="10.0">
                <children>
-                  <Label text="Studente:" />
-                  <TextField fx:id="MatricolaTextField" onAction="#handleMatricolaTextField" prefHeight="27.0" prefWidth="96.0" promptText="Matricola" />
-                  <Button mnemonicParsing="false" onAction="#handleAutocompletamento" style="-fx-background-color: Green;" text="✔︎" textFill="WHITE" />
-                  <TextField fx:id="NomeTextField" editable="false" prefWidth="140.0" promptText="Nome">
+                  <Label focusTraversable="false" text="Studente:" />
+                  <TextField fx:id="matricolaTextField" onKeyTyped="#handleMatricolaTextField" prefHeight="27.0" prefWidth="96.0" promptText="Matricola" />
+                  <Button fx:id="autocompletamentoButton" disable="true" focusTraversable="false" mnemonicParsing="false" onAction="#handleAutocompletamento" style="-fx-background-color: Green;" text="✔︎" textFill="WHITE">
+                     <cursor>
+                        <Cursor fx:constant="HAND" />
+                     </cursor>
+                     <opaqueInsets>
+                        <Insets />
+                     </opaqueInsets>
+                     <effect>
+                        <Lighting diffuseConstant="1.95" specularConstant="0.4" specularExponent="15.74" surfaceScale="4.34">
+                           <bumpInput>
+                              <Shadow blurType="GAUSSIAN" />
+                           </bumpInput>
+                           <light>
+                              <Light.Distant />
+                           </light>
+                        </Lighting>
+                     </effect></Button>
+                  <TextField fx:id="nomeTextField" editable="false" focusTraversable="false" prefWidth="150.0" promptText="Nome">
                      <HBox.margin>
                         <Insets left="25.0" />
                      </HBox.margin>
                   </TextField>
-                  <TextField fx:id="CognomeTextField" editable="false" prefWidth="140.0" promptText="Cognome" />
+                  <TextField fx:id="cognomeTextField" editable="false" focusTraversable="false" prefWidth="150.0" promptText="Cognome" />
                </children>
                <VBox.margin>
                   <Insets bottom="10.0" top="20.0" />
                </VBox.margin>
             </HBox>
-            <HBox alignment="CENTER" spacing="315.0">
+            <HBox alignment="CENTER" spacing="380.0">
                <children>
-                  <Button mnemonicParsing="false" onAction="#handleCercaCorsi" prefWidth="90.0" text="Cerca corsi" />
-                  <Button mnemonicParsing="false" onAction="#handleIscriviStudente" prefWidth="110.0" text="Iscrivi studente" />
+                  <Button fx:id="cercaCorsiButton" disable="true" focusTraversable="false" mnemonicParsing="false" onAction="#handleCercaCorsi" prefWidth="100.0" text="Cerca corsi">
+                     <cursor>
+                        <Cursor fx:constant="HAND" />
+                     </cursor></Button>
+                  <Button fx:id="iscriviStudenteButton" disable="true" focusTraversable="false" mnemonicParsing="false" onAction="#handleIscriviStudente" prefWidth="120.0" text="Iscrivi studente">
+                     <cursor>
+                        <Cursor fx:constant="HAND" />
+                     </cursor></Button>
                </children>
                <VBox.margin>
                   <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
                </VBox.margin>
             </HBox>
-            <TextArea fx:id="ResultTextArea" editable="false" prefHeight="260.0" wrapText="true">
+            <TextArea fx:id="resultTextArea" editable="false" focusTraversable="false" prefHeight="260.0" wrapText="true">
                <VBox.margin>
                   <Insets top="15.0" />
                </VBox.margin>
@@ -79,10 +111,13 @@
       </VBox>
    </center>
    <bottom>
-      <Button mnemonicParsing="false" onAction="#handleReset" prefWidth="60.0" text="Reset" BorderPane.alignment="TOP_RIGHT">
+      <Button fx:id="resetButton" disable="true" focusTraversable="false" mnemonicParsing="false" onAction="#handleReset" prefWidth="60.0" text="Reset" BorderPane.alignment="TOP_RIGHT">
          <BorderPane.margin>
             <Insets bottom="30.0" left="20.0" right="40.0" top="10.0" />
          </BorderPane.margin>
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
       </Button>
    </bottom>
 </BorderPane>

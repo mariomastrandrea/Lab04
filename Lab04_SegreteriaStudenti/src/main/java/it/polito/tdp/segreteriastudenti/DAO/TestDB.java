@@ -1,4 +1,4 @@
-package it.polito.tdp.lab04.DAO;
+package it.polito.tdp.segreteriastudenti.DAO;
 
 public class TestDB 
 {
@@ -11,7 +11,7 @@ public class TestDB
 		 */
 		
 		CorsoDAO cdao = new CorsoDAO();
-		cdao.getTuttiICorsi();
+		cdao.getAllCorsi();
 		
 		
 	}
